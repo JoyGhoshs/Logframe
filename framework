@@ -474,6 +474,9 @@ def main():
     elif inp=="back-mod":
         backdoor()
         main()
+    elif inp=="pen-tool":
+        pentool()
+        main()
     else:
         print('logframe: '+inp+': command not found')
         main()
