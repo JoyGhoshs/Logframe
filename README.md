@@ -1,5 +1,15 @@
 # Logframe
 Mordern-Pentesting Framework 
+
+
+
+ git clone https://github.com/JoyGhoshs/Logframe </br>
+ cd Logframe </br>
+ chmod +x install.sh </br>
+ ./install.sh </br>
+ logframe </br>
+ 
+ 
 <pre>
  ==[🄱🄻🄰🄲🄺-🄷🄰🅃-🄴🄳🄸🅃🄸🄾🄽]==
 ╔╗───────────╔═══╗
@@ -69,5 +79,29 @@ Mordern-Pentesting Framework
 [%] random-mac   (To Change Mac Adress To an Random MAc Adress [Temporary])   
 </pre>
 <pre>
-
+[~] gen-phpreverseshell            (Generate Php Reverse shell Using Msfvenom)                                 
+[~] gen-windowsuser                (Generate Windows add User Payload)                                         
+[~] gen-pyreverseshell             (Generate Python Reverse shell)                                             
+[~] gen-phpbackdoor                (Generate Simple Backdoor Written In Php)                                   
+[~] gen-jspshell                   (Generate Simple Jsp Reverse shell)                                         
+[~] gen-pastejacking               (Pastejacking Example Generator) 
+</pre>
+<pre>
+[!] ex-modcopy                         (ProFTPD 1.3.5 Mod_Copy Command Execution )(Auto*)                      
+[!] ex-ftpb                            (ProFTPD-1.3.3c Backdoor Command Execution)(Auto*)                      
+[!] ex-xmrpc                           (Wordpress XMLRPC DoS)(Auto*)                                           
+[!] ex-xmghost                         (WordPress XMLRPC GHOST Vulnerability Scanner)(Auto*)                   
+[!] ex-xmleval                         (PHP XML-RPC Arbitrary Code Execution)(Auto*)  
+</pre>
+<pre>
+(=_+) xss-scan                                  (Scan For xss Auto Using Xsscon)                               
+(=_+) beef-xss                                  (Beef Xss Explotion Framework)                                 
+(=_+) commix                                    (operating system command injection and exploitation)          
+(=_+) reccoon                                   (Reconnaissance Target With reccooon)                          
+(=_+) bandit                                    (Python Source code Vulnerability Scanner bandit)              
+(=_+) cewl                                      (Custom Wordlist Generator cewl)                               
+(=_+) whatweb                                   (Next generation web scanner whatweb)                          
+(=_+) xsrf-scan                                 (Xsrf scan using xsrfprobe)                                    
+(=_+) cadaver                                   (Put Vulnerability Exploition Using Cadaver)                   
+(=_+) wafw00f                                   (WebApplication Firewall Scanner )    
 </pre>
