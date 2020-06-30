@@ -457,7 +457,7 @@ def main():
         main()
     elif inp=="gen-pastejacking":
         payload=input("Enter command That Executes After User Copy Something From The Page:- ")
-        execute("./res/pastejacking.sh "+payload)
+        execute("./bin/pastejacking.sh "+payload)
         print("Payload Generated :- ")
         execute("pwd")
         main()
