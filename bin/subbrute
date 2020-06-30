@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+#Bruteforcing Subdomains Using Bash Scripting (Idea From Tom nom nom)
+#Crafted By JoyGhosh
+domain=$1
+wordlist=$2
+#-------------------------------------------
+while read sub; do
+  if host $sub.$domain &> /dev/null; then
+    echo "$sub.$domain";
+  fi
+done < $wordlist

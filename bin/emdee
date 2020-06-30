@@ -1,0 +1,19 @@
+#!/usr/bin/python3
+import requests, hashlib
+from bs4 import BeautifulSoup
+ua=sys.argv[1]
+url = ua
+
+s = requests.session()
+response = s.get(url)
+
+soup = BeautifulSoup(response.content, "lxml")
+
+str = soup.h3.string
+hash = hashlib.md5(str.encode()).hexdigest()
+
+myobj = {'hash': hash}
+
+flag = s.post(url, data = myobj)
+
+print(flag.text)

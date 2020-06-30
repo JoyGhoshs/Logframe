@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+echo """
+use auxiliary/scanner/http/dir_scanner
+set dictionary $1
+set RHOSTS $2
+exploit
+""" >> dir.rc

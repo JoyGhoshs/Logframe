@@ -1,0 +1,7 @@
+#!/usr/bin/python3
+from googlesearch import search
+import sys
+url=sys.argv[1]
+query = url
+for i in search(query, start=0, stop=None,num=10):
+    print(i)

